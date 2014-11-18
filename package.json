@@ -1,0 +1,29 @@
+{
+  "name": "trello-json-parser",
+  "version": "0.0.1",
+  "description": "Parses the JSON that trello exports.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArtskydJ/trello-json-parser.git"
+  },
+  "keywords": [
+    "trello",
+    "json",
+    "parse",
+    "parser",
+    "JSON"
+  ],
+  "author": "Joseph Dykstra",
+  "license": "VOL",
+  "bugs": {
+    "url": "https://github.com/ArtskydJ/trello-json-parser/issues"
+  },
+  "homepage": "https://github.com/ArtskydJ/trello-json-parser",
+  "dependencies": {
+    "xtend": "^4.0.0"
+  }
+}
