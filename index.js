@@ -1,15 +1,15 @@
 var through2 = require('through2')
 
-function reformat(parsed, showClosed) {
+function reformat(parsed, showArchived) {
 	var idToName = parsed.lists.reduce(function (memo, curr) {
-		if (showClosed || !curr.closed) {
+		if (showArchived || !curr.closed) {
 			memo[curr.id] = curr.name
 		}
 		return memo
 	}, {})
 	return parsed.cards.reduce(function (memo, curr) {
 		var name = idToName[curr.idList]
-		if (showClosed || (name && !curr.closed)) {
+		if (showArchived || (name && !curr.closed)) {
 			memo[name] = memo[name] || []
 			memo[name].push(curr.name)
 		}
@@ -17,16 +17,17 @@ function reformat(parsed, showClosed) {
 	}, {})
 }
 
-var str = ''
-process.stdin
-	.pipe( through2(function data(buf, enc, cb) {
-		str += buf.toString() //concat
-		cb()
-	}, function end(cb) {
-		var parsed = JSON.parse(str)
-		var formatted = reformat(parsed, true)
-		var stringified = JSON.stringify(formatted)
-		this.push(stringified)
-		cb()
-	}))
-	.pipe(process.stdout)
+module.exports = function tuj(stream, showArchived, cb) {
+	if (typeof showArchived === 'function') {
+		cb = showArchived
+		showArchived = false
+	}
+	cb = cb || function () {}
+	var str = ''
+	stream.on('data', function (chunk) {
+		str += chunk.toString() //concat
+	})
+	stream.on('end', function () {
+		cb(null, reformat(JSON.parse(str), showArchived) )
+	})
+}

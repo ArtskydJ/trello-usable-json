@@ -1,0 +1,82 @@
+{
+	"music-room": [
+		"one room",
+		"require registration, no anonymous",
+		"chatroom, with log of song start/end",
+		"drag audio files to page",
+		"uploads to db, auto-conversion later, vbr mp3 preferable",
+		"round robin songs",
+		"reorder via gui",
+		"use socket.io",
+		"things to figure out: sending files to server; getting files back;",
+		"cap each user's queue to 20 or so",
+		"store files to disk on server",
+		"round robin lib gets users, and under each user has (array?) file ids, possibly metadata too.",
+		"state: user set, and each user's queue",
+		"get metadata with https://www.npmjs.org/package/musicmetadata or https://www.npmjs.org/package/audio-metadata",
+		"user browser-audio or howler.js"
+	],
+	"Just Login": [
+		"run jlexample",
+		"test jldebouncer",
+		"test config file jlexample",
+		"nohup command with ploy",
+		"auto-run on startup and restart on crash",
+		"create digital ocean image when in good condition",
+		"fix documentation to be RIDICULOUSLY EASY for the newbs",
+		"make the <enter> button work",
+		"use email validator; get rid of auto ui submit thing.              also, on-x-time or on-keypress, the msg should disappear",
+		"note by the core that it requires a levelup db (link to levelup), then mention that they can just use level",
+		"go to all just login modules documentation and replace the acronyms with words.",
+		"figure out the bug where you get logged out",
+		"not localhost, http://104.131.240.195/",
+		"get rid of session manager section, assume they have a session manager",
+		"add content such as documentation",
+		"rename jlcores sessiondb to authenticatedSessionsDb",
+		"clean up browser's console",
+		"first mention of sessions, link to gh page of session manager",
+		"rename jlserverapi to jlexamplesessionmanager",
+		"deploy to DO server",
+		"render content from readme.md?",
+		"debouncer could be at the bottom",
+		"fix justlogin.xyz; no build.js served...",
+		"add session expiration to the \"session manager\"",
+		"bug where you get logged out: jlc is cb'ing with a session read err due to level-lock. 2-maybe it is calling isAuthenticated in too quick of succession. 3-maybe something aquires the lock and never gives it up.",
+		"instead of quote marks, put badEmail in a well, like the numbers are when authed...",
+		"instead of \"not email\", have \"for testing purposes\"",
+		"session manager may not use nonexistent session id",
+		"change the session manager to have 1 function that does continue, and then create new.",
+		"expound on all core functions",
+		"name the functions: createSession and continueSession",
+		"Rename \"Core source\" to \"library source on GH\" or somethin'",
+		"Add a link to the Github page for just-login-core on the top bar",
+		"Right before each explaination of modules (core, emailer, debouncer) have a line \"To install: `npm install [modulename]`\"",
+		"make the tests for session manager pass",
+		"Add a link to the source code for the example site."
+	],
+	"josephdykstra.com": [
+		"figure out noddity",
+		"create logo",
+		"change fonts",
+		"create more content",
+		"fix ugly icons",
+		"make some tests?",
+		"finish server side rendering",
+		"use render.renderPost() instead of render.populateRootRactive()"
+	],
+	"CS2N competition": [
+		"Get robotc virtual worlds working",
+		"make all parts of the code work",
+		"maybe drive around in vw just to figure out good strategies",
+		"figure out which vw bot to use",
+		"make new repo",
+		"program the bot",
+		"add auton code to the .gitignore until Dec. 16"
+	],
+	"node-admesh": [
+		"figure out rvagg/nan"
+	],
+	"Bored": [
+		"Read bookmarked pages"
+	]
+}

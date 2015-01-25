@@ -1,11 +1,11 @@
 {
   "name": "trello-usable-json",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Reduces the ridiculous amount of json from trello into the bits you want.",
   "main": "index.js",
-  "bin": "index.js",
+  "bin": "bin.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tap test/*.js"
   },
   "repository": {
     "type": "git",
@@ -26,5 +26,9 @@
   "homepage": "https://github.com/ArtskydJ/trello-usable-json",
   "dependencies": {
     "through2": "^0.6.3"
+  },
+  "devDependencies": {
+    "concat-stream": "^1.4.7",
+    "tap": "^0.5.0"
   }
 }
