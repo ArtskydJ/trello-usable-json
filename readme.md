@@ -3,14 +3,14 @@ trello-usable-json
 
 [![Build Status](https://travis-ci.org/ArtskydJ/trello-usable-json.svg)](https://travis-ci.org/ArtskydJ/trello-usable-json)
 
-Reduces the ridiculous amount of json from trello into the bits you want.
+Reduces the ridiculous amount of JSON from trello into the bits you want.
 
-You don't want 150kb of json data. You want an array of card strings for each board.
+You don't want 150kb of JSON data. You want an array of card strings for each board.
 
 #cli
 
-- Pipe in your trello json.
-- It pipes out the non-archived cards.
+- Pipe in your JSON from trello. (E.g. if your board is `'https://trello.com/b/6xbOmILH'`, append `'.json'`.)
+- It pipes out some JSON that is usable.
 - Wheeeeee!
 
 ```
