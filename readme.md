@@ -1,6 +1,8 @@
 trello-usable-json
 ==================
 
+[![Build Status](https://travis-ci.org/ArtskydJ/trello-usable-json.svg)](https://travis-ci.org/ArtskydJ/trello-usable-json)
+
 Reduces the ridiculous amount of json from trello into the bits you want.
 
 You don't want 150kb of json data. You want an array of card strings for each board.
