@@ -3,32 +3,55 @@ trello-usable-json
 
 [![Build Status](https://travis-ci.org/ArtskydJ/trello-usable-json.svg)](https://travis-ci.org/ArtskydJ/trello-usable-json)
 
-Reduces the ridiculous amount of json from trello into the bits you want.
+Reduces the ridiculous amount of JSON from trello into the bits you want.
 
-You don't want 150kb of json data. You want an array of card strings for each board.
+You don't want 150kb of JSON data. You want an array of card strings for each board.
 
 #cli
 
-- Pipe in your trello json.
-- It pipes out the non-archived cards.
+- Pipe in your JSON from trello. E.g. `'curl https://trello.com/b/6xbOmILH.json'`. (To `curl`, I think the board must be public. You might have to save the file from your browser and pipe it in with `cat` on linux, and `type` on windows.)
+- It pipes out some JSON that is usable.
 - Wheeeeee!
 
 ```
 npm install trello-usable-json --global
 ```
 
+#examples
+
+**curl**
+
 ```
 $ curl https://trello.com/b/6xbOmILH.json | trello-usable-json
 { "my first list": [
-    "a card",
-    "another card"
+    "a card"
   ], "another list": [
-    "moar cards",
-    "cards,",
-    "Cards,",
+    "cards",
     "CARDS!!!"
   ] }
 ```
+
+**cat**
+(on windows use `type` instead of `cat`)
+
+```
+$ cat 6xbOmILH.json | trello-usable-json --archived
+{ "my first list": [
+    "a card",
+    "an archived card"
+  ], "another list": [
+    "moar cards of archivedness",
+    "cards",
+    "this one was archived too...",
+    "CARDS!!!"
+  ], "even another list": [
+    "if every card in a list is archived",
+    "(like these cards were), then the",
+    "list won't show up; cuz it's empty!",
+    "note the previous example doesn't have this list."
+  ] }
+```
+
 
 #api
 
@@ -36,7 +59,7 @@ $ curl https://trello.com/b/6xbOmILH.json | trello-usable-json
 npm install trello-usable-json
 ```
 
-```
+```js
 var tuj = require('trello-usable-json')
 ```
 
