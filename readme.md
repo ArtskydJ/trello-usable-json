@@ -2,6 +2,8 @@ trello-usable-json
 ==================
 
 [![Build Status](https://travis-ci.org/ArtskydJ/trello-usable-json.svg)](https://travis-ci.org/ArtskydJ/trello-usable-json)
+[![Dependency Status](https://david-dm.org/artskydj/trello-usable-json.svg)](https://david-dm.org/artskydj/trello-usable-json)
+[![devDependency Status](https://david-dm.org/artskydj/trello-usable-json/dev-status.svg)](https://david-dm.org/artskydj/trello-usable-json#info=devDependencies)
 
 Reduces the ridiculous amount of JSON from trello into the bits you want.
 
