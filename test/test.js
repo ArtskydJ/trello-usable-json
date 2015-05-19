@@ -11,7 +11,7 @@ test('test with archived', function (t) {
 	t.plan(3)
 	var stream = fs.createReadStream(__dirname + '/test.json')
 	var expectObj = require('./expect.json')
-	var expectStr = fs.readFileSync('./expect.json', {encoding:'utf8'})
+	var expectStr = fs.readFileSync(__dirname + '/expect.json', {encoding:'utf8'})
 	tuj(stream, true, function (err, obj) {
 		t.notOk(err, err ? err.message : 'no error')
 		t.deepEqual( obj, expectObj, 'all the values are correct' )
