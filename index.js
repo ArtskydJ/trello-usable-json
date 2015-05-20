@@ -1,4 +1,5 @@
-var through2 = require('through2')
+var concat = require('concat-stream')
+var JSONparse = require('safe-json-parse')
 
 function reformat(parsed, showArchived) {
 	var idToName = parsed.lists.reduce(function (memo, curr) {
@@ -18,16 +19,20 @@ function reformat(parsed, showArchived) {
 }
 
 module.exports = function tuj(stream, showArchived, cb) {
+	console.log('hi')
 	if (typeof showArchived === 'function') {
 		cb = showArchived
 		showArchived = false
 	}
-	cb = cb || function () {}
-	var str = ''
-	stream.on('data', function (chunk) {
-		str += chunk.toString() //concat
-	})
-	stream.on('end', function () {
-		cb(null, reformat(JSON.parse(str), showArchived) )
-	})
+	if (!cb) cb = function () {}
+	stream.pipe(concat({ encoding: 'utf8' }, function (str) {
+		JSONparse(str, function (err, json) {
+			if (err) {
+				cb(err)
+			} else {
+				var result = reformat(json, showArchived)
+				cb(null, result)
+			}
+		})
+	}))
 }
