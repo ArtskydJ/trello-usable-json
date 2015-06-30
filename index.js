@@ -1,38 +1,30 @@
+var trello = require('trello-usable-json')
+var objToHtml = require('json-to-html')
+var hyperquest = require('hyperquest')
 var concat = require('concat-stream')
-var JSONparse = require('safe-json-parse')
 
-function reformat(parsed, showArchived) {
-	var idToName = parsed.lists.reduce(function (memo, curr) {
-		if (showArchived || !curr.closed) {
-			memo[curr.id] = curr.name
-		}
-		return memo
-	}, {})
-	return parsed.cards.reduce(function (memo, curr) {
-		var name = idToName[curr.idList]
-		if (showArchived || (name && !curr.closed)) {
-			memo[name] = memo[name] || []
-			memo[name].push(curr.name)
-		}
-		return memo
-	}, {})
+var opts = {
+	headers: {
+		'Access-Control-Allow-Origin': true
+	}
 }
 
-module.exports = function tuj(stream, showArchived, cb) {
-	console.log('hi')
-	if (typeof showArchived === 'function') {
-		cb = showArchived
-		showArchived = false
-	}
-	if (!cb) cb = function () {}
-	stream.pipe(concat({ encoding: 'utf8' }, function (str) {
-		JSONparse(str, function (err, json) {
-			if (err) {
-				cb(err)
-			} else {
-				var result = reformat(json, showArchived)
-				cb(null, result)
-			}
+function parse(link) {
+	console.log('link', link)
+	hyperquest(link, opts, function (err, res) {
+		if (err) throw err
+		res.pipe(concat({ encoding: 'utf-8' }, function (str) {
+			var obj = JSON.parse(str)
+			document.getElementById('JSON1').innerHTML = objToHtml(obj)
+		}))
+		trello(res, false, function (err, obj) {
+			if (err) throw err
+			document.getElementById('JSON2').innerHTML = objToHtml(obj)
 		})
-	}))
+	})
+}
+
+var linkBox = document.getElementById('link-box')
+linkBox.onchange = function (ev) {
+	parse(linkBox.value)
 }

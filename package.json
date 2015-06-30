@@ -1,34 +1,16 @@
 {
-  "name": "trello-usable-json",
-  "version": "0.2.2",
-  "description": "Reduces the ridiculous amount of json from trello into the bits you want.",
-  "main": "index.js",
-  "bin": "bin.js",
   "scripts": {
-    "test": "tap test/*.js"
+    "build": "browserify index.js -o bundle.js",
+    "watch": "watchify index.js -o bundle.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ArtskydJ/trello-usable-json.git"
-  },
-  "keywords": [
-    "trello",
-    "json",
-    "parse",
-    "parser",
-    "JSON"
-  ],
-  "author": "Joseph Dykstra",
-  "license": "VOL",
-  "bugs": {
-    "url": "https://github.com/ArtskydJ/trello-usable-json/issues"
-  },
-  "homepage": "https://github.com/ArtskydJ/trello-usable-json",
   "dependencies": {
-    "concat-stream": "^1.4.8",
-    "safe-json-parse": "^4.0.0"
+    "concat-stream": "^1.5.0",
+    "hyperquest": "^1.2.0",
+    "json-to-html": "^0.1.2",
+    "trello-usable-json": "^0.2.2"
   },
   "devDependencies": {
-    "tap": "^1.0.10"
+    "browserify": "^10.2.4",
+    "watchify": "^3.2.3"
   }
 }
