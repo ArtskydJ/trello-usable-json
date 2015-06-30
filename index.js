@@ -19,7 +19,6 @@ function reformat(parsed, showArchived) {
 }
 
 module.exports = function tuj(stream, showArchived, cb) {
-	console.log('hi')
 	if (typeof showArchived === 'function') {
 		cb = showArchived
 		showArchived = false
