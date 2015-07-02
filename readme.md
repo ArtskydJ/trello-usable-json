@@ -9,7 +9,11 @@ Reduces the ridiculous amount of JSON from trello into the bits you want.
 
 You don't want 150kb of JSON data. You want an array of card strings for each board.
 
-#cli
+# UPDATE
+
+How about you use the [trello api](https://trello.com/docs/api/index.html); I'm probably not going to maintain this...
+
+# cli
 
 - Pipe in your JSON from trello. E.g. `'curl https://trello.com/b/6xbOmILH.json'`. (To `curl`, I think the board must be public. You might have to save the file from your browser and pipe it in with `cat` on linux, and `type` on windows.)
 - It pipes out some JSON that is usable.
@@ -19,7 +23,7 @@ You don't want 150kb of JSON data. You want an array of card strings for each bo
 npm install trello-usable-json --global
 ```
 
-#examples
+# examples
 
 **curl**
 
@@ -55,17 +59,17 @@ $ cat 6xbOmILH.json | trello-usable-json --archived
 ```
 
 
-#api
+# api
 
 ```
 npm install trello-usable-json
 ```
 
 ```js
-var tuj = require('trello-usable-json')
+var usable = require('trello-usable-json')
 ```
 
-###tuj(stream, [showArchived,] cb)
+### usable(stream, [showArchived,] cb)
 
 - `stream` of trello's JSON data. (Readable.)
 - `showArchived` is whether or not to show archived cards. Defaults to `false`.
@@ -89,6 +93,6 @@ usable(stream, function (err, obj) {
 })
 ```
 
-#license
+# license
 
 [VOL](http://veryopenlicense.com)
