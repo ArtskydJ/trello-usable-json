@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": "bin.js",
   "scripts": {
-    "test": "tap test/*.js"
+    "test": "node test/test.js"
   },
   "repository": {
     "type": "git",
@@ -25,10 +25,10 @@
   },
   "homepage": "https://github.com/ArtskydJ/trello-usable-json",
   "dependencies": {
-    "concat-stream": "^1.4.8",
-    "safe-json-parse": "^4.0.0"
+    "safe-json-parse": "^4.0.0",
+    "simple-concat": "^1.0.0"
   },
   "devDependencies": {
-    "tap": "^1.0.10"
+    "tape": "^4.6.3"
   }
 }

@@ -1,4 +1,4 @@
-var concat = require('concat-stream')
+var concat = require('simple-concat')
 var JSONparse = require('safe-json-parse')
 
 function reformat(parsed, showArchived) {
@@ -24,14 +24,12 @@ module.exports = function tuj(stream, showArchived, cb) {
 		showArchived = false
 	}
 	if (!cb) cb = function () {}
-	stream.pipe(concat({ encoding: 'utf8' }, function (str) {
-		JSONparse(str, function (err, json) {
-			if (err) {
-				cb(err)
-			} else {
-				var result = reformat(json, showArchived)
-				cb(null, result)
-			}
+	concat(stream, function (err, buf) {
+		if (err) return cb(err)
+		JSONparse(buf.toString(), function (err, json) {
+			if (err) return cb(err)
+			var result = reformat(json, showArchived)
+			cb(null, result)
 		})
-	}))
+	})
 }
