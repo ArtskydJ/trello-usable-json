@@ -1,6 +1,6 @@
 {
   "name": "trello-usable-json",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "description": "Reduces the ridiculous amount of json from trello into the bits you want.",
   "main": "index.js",
   "bin": "bin.js",
